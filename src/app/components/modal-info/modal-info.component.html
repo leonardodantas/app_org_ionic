@@ -1,0 +1,18 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Informações Produtor</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label>Produtor: {{produtor.nome}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Media: {{produtor.media}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

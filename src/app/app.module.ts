@@ -8,14 +8,20 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ModalInfoComponent } from './components/modal-info/modal-info.component';
+import { SharedModule } from './components/shared.module';
+import { CarrinhoPipe } from './pages/carrinho.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CarrinhoPipe],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     StatusBar,

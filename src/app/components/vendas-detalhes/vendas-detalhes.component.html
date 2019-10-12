@@ -1,0 +1,31 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Informações Produtor</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list lines="none" *ngFor="let p of produtos">
+    <ion-card>
+      <ion-item>
+        <ion-label>{{p.nome_produto}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>R$ {{p.preco_venda}} (Unitario)</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Quantidade: </ion-label>
+        <ion-label>{{p.quantidade_venda}}</ion-label>
+        <ion-button (click)="add(p)">
+          <ion-icon slot="icon-only" name="add-circle" ></ion-icon>
+        </ion-button>
+        <ion-button (click)="remove(p)">
+          <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+
+</ion-content>

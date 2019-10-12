@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Carrinho
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div *ngIf="carrinho.length > 0; else semItem">
+<div *ngFor="let p of carrinho">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Cod Venda: {{p.id}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-item>
+      <ion-icon name="logo-usd" slot="start"></ion-icon>
+      <ion-label>Desconto: {{p.desconto}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="add-circle" slot="start"></ion-icon>
+      <ion-label>Frete: {{p.frete}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="alert" slot="start"></ion-icon>
+      <ion-label>Valor Produtos:{{p.valor_total_produtos | currency  }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-button color="success" (click)="finalizar(p)">Finalizar</ion-button>
+      <ion-button color="primary" (click)="detalhesCarrinho(p)">Detalhes</ion-button>
+    </ion-item>
+  </ion-card>
+</div>
+</div>
+<ng-template #semItem>
+  <ion-content class="">
+    <h1 class="ion-text-center ion-padding-top" color="success">Seu carrinho está vazio</h1>
+    <h1 class="ion-text-center icon-7em" color="success"><ion-icon name="sad"></ion-icon></h1>  
+  </ion-content>
+</ng-template>
+</ion-content>

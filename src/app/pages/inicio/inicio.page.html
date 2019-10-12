@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary" >
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Inicio
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-searchbar #p (ionChange)="pesquisar(p.value)" (ionClear)="mostrarTodos()" (ionCancel)="mostrarTodos()">
+  </ion-searchbar>
+  <div *ngFor="let p of produtos">
+    <ion-card>
+        <img class="imagem" [src]="p.img" />
+      <ion-card-header>
+        <ion-card-subtitle>{{p.id}}</ion-card-subtitle>
+        <ion-card-title>{{p.produto}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{p.descricao}}
+      </ion-card-content>
+      <ion-item>
+        <ion-icon name="logo-usd" slot="start"></ion-icon>
+        <ion-label>R$ {{p.valor}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="add-circle" slot="start"></ion-icon>
+        <ion-label>Quantidade: {{p.qtd}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="alert" slot="start"></ion-icon>
+        <ion-label>Validade: {{p.val}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Adicionar Quantidade:</ion-label>
+        <ion-input type="number" #qtd min="0"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-button color="primary" (click)="adicionarProduto(p,qtd.value)">Adicionar</ion-button>
+        <ion-button color="success" (click)="info(p)">Info</ion-button>
+      </ion-item>
+    </ion-card>
+  </div>
+
+</ion-content>

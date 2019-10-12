@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Avaliações
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="avaliar.length > 0; else semAva">
+    <ion-card *ngFor="let a of avaliar" >
+      <ion-card-header>
+        <ion-card-title>{{a.produtor}}</ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-icon name="logo-usd" slot="start"></ion-icon>
+        <ion-label>Desconto: {{a.valor_desconto}}%</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="add-circle" slot="start"></ion-icon>
+        <ion-label>Frete: {{a.valor_frete }}%</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="alert" slot="start"></ion-icon>
+        <ion-label>Valor Produtos: {{a.valor_total_produtos}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="alert" slot="start"></ion-icon>
+        <ion-label>Valor Final: {{a.valor_final}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nota:</ion-label>
+        <ion-select okText="Ok" #val cancelText="Cancelar">
+          <ion-select-option value="0">0</ion-select-option>
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="10">10</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-button color="success" (click)="info(val.value,a)">Avaliar</ion-button>
+      </ion-item>
+    </ion-card>
+  </div>
+  <ng-template #semAva>
+    <div class="">
+      <h1 class="ion-text-center ion-padding-top" color="success">Nenhuma Avaliação em Aberta</h1>
+      <h1 class="ion-text-center icon-8em" color="success">
+        <ion-icon name="sad"></ion-icon>
+      </h1>
+    </div>
+  </ng-template>
+
+</ion-content>

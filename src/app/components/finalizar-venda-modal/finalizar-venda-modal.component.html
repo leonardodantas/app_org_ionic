@@ -1,0 +1,52 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Finalizar Venda</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="formPagamento" *ngIf="finalizarVenda !== true; else telaPago">
+    <h1>Pagamento e Finalização</h1>
+    <ion-item>
+      <ion-label>Metodo de Pagamento</ion-label>
+      <ion-select placeholder="Select One" formControlName="pagamento">
+        <ion-select-option value="cartao">Cartão</ion-select-option>
+        <ion-select-option value="vista">Vista</ion-select-option>
+      </ion-select>
+      <ion-note *ngIf="this.formPagamento.get('pagamento').invalid && this.formPagamento.get('pagamento').touched">Campo
+        Obrigatorio</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Desconto: R$ {{venda.desconto }}
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Frete: R$ {{venda.frete }}
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Valor Produtos: R$ {{ venda.valor_total_produtos}}
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Valor Final: R$ {{venda.valor_final}}
+      </ion-label>
+    </ion-item>
+    <ion-button expand="full" (click)="finalizarCompra()" shape="round">Finalizar</ion-button>
+  </form>
+  <ng-template #telaPago>
+    <ion-content class="">
+      <h1 class="ion-text-center ion-padding-top" color="success">Venda Finalizada com Sucesso</h1>
+      <h1 class="ion-text-center icon-7em" >
+        <ion-icon color="success" name="checkmark-circle"></ion-icon>
+      </h1>
+    </ion-content>
+  </ng-template>
+</ion-content>
